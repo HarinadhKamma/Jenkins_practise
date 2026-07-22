@@ -44,7 +44,7 @@ pipeline {
                     echo "Choice: ${params.CHOICE}"
 
                     echo "Password: ${params.PASSWORD}"
-                    echo "Testing Web-hook"
+                  
                   env
                 """ 
               }  
