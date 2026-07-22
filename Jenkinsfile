@@ -2,6 +2,10 @@ pipeline {
     agent{
         label 'Agent-1'
     }
+
+    environment{
+        course ="Devops"
+    }
     stages {
 
         stage('Checkout') {
@@ -12,6 +16,13 @@ pipeline {
 
         stage('Build') {
             steps {
+              script{
+                sh """
+                  echo "build"
+                  echo $course
+                  env
+                """ 
+              }  
                 echo 'Building the application...'
             }
         }
@@ -32,6 +43,7 @@ pipeline {
     post {
         always {
             echo 'Pipeline Completed'
+            cleanWs()
         }
 
         success {
